@@ -1,8 +1,13 @@
-import { ExportNamedDeclaration } from "@babel/types";
 import { IAstJson } from "./ack.types";
 import * as t from "@babel/types";
 
-export default (astJson: IAstJson) => {
+/**
+ * Generates a Babel AST program from an IAstJson object.
+ *
+ * @param {IAstJson} astJson - The input JSON object representing the AST.
+ * @returns {t.Program} A Babel AST program.
+ */
+export default (astJson: IAstJson):t.Program => {
   const astKeys = Object.keys(astJson);
   if (astKeys.length === 0) return;
   const results = astKeys.flatMap((astKey) => {
@@ -16,15 +21,23 @@ export default (astJson: IAstJson) => {
   return t.program(results);
 };
 
+/**
+ * Creates a TypeScript interface declaration.
+ *
+ * @param {string} astKey - The key of the AST node.
+ * @param {string} requestType - The type of the request parameter.
+ * @param {string} responseType - The type of the response parameter.
+ * @returns {ExportNamedDeclaration} The Babel AST node for the interface declaration.
+ */
+
 export const createInterface = (
   astKey: string,
   requestType: string,
   responseType: string
 ) => {
-  //create interface
+
   const interfaceId = t.identifier(`Use${astKey}Query`);
 
-  //create param
   const typeParam = t.tsTypeParameterDeclaration([
     t.tsTypeParameter(null, null, "TData"),
   ]);
@@ -46,7 +59,7 @@ export const createInterface = (
 
   const interfaceBody = t.tSInterfaceBody([propertySignature]);
 
-  // create interface declaration
+
   const interfaceDeclaration = t.tsInterfaceDeclaration(
     interfaceId,
     typeParam,
@@ -56,6 +69,15 @@ export const createInterface = (
   return t.exportNamedDeclaration(interfaceDeclaration, []);
 };
 
+
+/**
+ * Creates a React hook function declaration.
+ *
+ * @param {string} astKey - The key of the AST node.
+ * @param {string} requestType - The type of the request parameter.
+ * @param {string} responseType - The type of the response parameter.
+ * @returns {VariableDeclaration} The Babel AST node for the hook function declaration.
+ */
 export const createHook = (
   astKey: string,
   requestType: string,
@@ -88,6 +110,7 @@ export const createHook = (
     ]),
   ];
 
+  //return hook body
   const hookBody = t.blockStatement([
     t.returnStatement(
       t.callExpression(t.identifier("useQuery"), [

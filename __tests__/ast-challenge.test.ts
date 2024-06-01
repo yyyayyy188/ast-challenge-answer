@@ -1,17 +1,17 @@
 import actHookCreate from "../src/index";
 import generator from "@babel/generator";
-import example from "../example-methods.json";
-import * as t from "@babel/types";
 
+/**
+ * Test case to verify the AST node creation for a given JSON input.
+ * The test checks if the generated AST node matches the expected snapshot.
+ */
 test("create returns correct AST node", () => {
-  //   console.log(example);
   const astJson = {
     Pools: {
       requestType: "QueryPoolsRequest",
       responseType: "QueryPoolsResponse",
     },
   };
-  const result: any = actHookCreate(astJson);
-  console.log(generator(result).code);
+  const result:any = actHookCreate(astJson);
   expect(generator(result).code).toMatchSnapshot();
 });
