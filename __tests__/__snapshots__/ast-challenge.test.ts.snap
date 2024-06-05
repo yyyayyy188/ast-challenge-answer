@@ -8,7 +8,7 @@ exports[`create returns correct AST node 1`] = `
 const usePools = <TData = QueryPoolsResponse,>({
   request,
   options
-}): UseQueryResult<TData> => {
+}): UsePoolsQuery<TData> => {
   return useQuery([\\"PoolsQuery\\", request], () => {
     if (!queryService) throw new Error(\\"Query Service not initialized\\");
     return queryService.pools(request);

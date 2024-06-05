@@ -150,7 +150,7 @@ export const createHook = (
   hookFunction.typeParameters = typeParameterDeclaration;
   hookFunction.returnType = t.tsTypeAnnotation(
     t.tsTypeReference(
-      t.identifier("UseQueryResult"),
+      t.identifier(`Use${astKey}Query`),
       t.tsTypeParameterInstantiation([t.tsTypeReference(t.identifier("TData"))])
     )
   );
