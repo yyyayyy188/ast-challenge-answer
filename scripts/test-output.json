@@ -1,0 +1,323 @@
+{
+  "type": "File",
+  "errors": [],
+  "program": {
+    "type": "Program",
+    "sourceType": "module",
+    "interpreter": null,
+    "body": [
+      {
+        "type": "ExportNamedDeclaration",
+        "exportKind": "type",
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "TSInterfaceDeclaration",
+          "id": {
+            "type": "Identifier",
+            "name": "UsePoolsQuery"
+          },
+          "typeParameters": {
+            "type": "TSTypeParameterDeclaration",
+            "params": [
+              {
+                "type": "TSTypeParameter",
+                "name": "TData"
+              }
+            ]
+          },
+          "extends": [
+            {
+              "type": "TSExpressionWithTypeArguments",
+              "expression": {
+                "type": "Identifier",
+                "name": "ReactQueryParams"
+              },
+              "typeParameters": {
+                "type": "TSTypeParameterInstantiation",
+                "params": [
+                  {
+                    "type": "TSTypeReference",
+                    "typeName": {
+                      "type": "Identifier",
+                      "name": "QueryPoolsResponse"
+                    }
+                  },
+                  {
+                    "type": "TSTypeReference",
+                    "typeName": {
+                      "type": "Identifier",
+                      "name": "TData"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "body": {
+            "type": "TSInterfaceBody",
+            "body": [
+              {
+                "type": "TSPropertySignature",
+                "key": {
+                  "type": "Identifier",
+                  "name": "request"
+                },
+                "computed": false,
+                "optional": true,
+                "typeAnnotation": {
+                  "type": "TSTypeAnnotation",
+                  "typeAnnotation": {
+                    "type": "TSTypeReference",
+                    "typeName": {
+                      "type": "Identifier",
+                      "name": "QueryPoolsRequest"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "usePools"
+            },
+            "init": {
+              "type": "ArrowFunctionExpression",
+              "id": null,
+              "generator": false,
+              "async": false,
+              "params": [
+                {
+                  "type": "ObjectPattern",
+                  "properties": [
+                    {
+                      "type": "ObjectProperty",
+                      "method": false,
+                      "key": {
+                        "type": "Identifier",
+                        "name": "request"
+                      },
+                      "computed": false,
+                      "shorthand": true,
+                      "value": {
+                        "type": "Identifier",
+                        "name": "request"
+                      },
+                      "extra": {
+                        "shorthand": true
+                      }
+                    },
+                    {
+                      "type": "ObjectProperty",
+                      "method": false,
+                      "key": {
+                        "type": "Identifier",
+                        "name": "options"
+                      },
+                      "computed": false,
+                      "shorthand": true,
+                      "value": {
+                        "type": "Identifier",
+                        "name": "options"
+                      },
+                      "extra": {
+                        "shorthand": true
+                      }
+                    }
+                  ],
+                  "typeAnnotation": {
+                    "type": "TSTypeAnnotation",
+                    "typeAnnotation": {
+                      "type": "TSTypeReference",
+                      "typeName": {
+                        "type": "Identifier",
+                        "name": "UsePoolsQuery"
+                      },
+                      "typeParameters": {
+                        "type": "TSTypeParameterInstantiation",
+                        "params": [
+                          {
+                            "type": "TSTypeReference",
+                            "typeName": {
+                              "type": "Identifier",
+                              "name": "TData"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "body": {
+                "type": "BlockStatement",
+                "body": [
+                  {
+                    "type": "ReturnStatement",
+                    "argument": {
+                      "type": "CallExpression",
+                      "callee": {
+                        "type": "Identifier",
+                        "name": "useQuery"
+                      },
+                      "arguments": [
+                        {
+                          "type": "ArrayExpression",
+                          "elements": [
+                            {
+                              "type": "StringLiteral",
+                              "extra": {
+                                "rawValue": "poolsQuery",
+                                "raw": "\"poolsQuery\""
+                              },
+                              "value": "poolsQuery"
+                            },
+                            {
+                              "type": "Identifier",
+                              "name": "request"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "ArrowFunctionExpression",
+                          "id": null,
+                          "generator": false,
+                          "async": false,
+                          "params": [],
+                          "body": {
+                            "type": "BlockStatement",
+                            "body": [
+                              {
+                                "type": "IfStatement",
+                                "test": {
+                                  "type": "UnaryExpression",
+                                  "operator": "!",
+                                  "prefix": true,
+                                  "argument": {
+                                    "type": "Identifier",
+                                    "name": "queryService"
+                                  }
+                                },
+                                "consequent": {
+                                  "type": "ThrowStatement",
+                                  "argument": {
+                                    "type": "NewExpression",
+                                    "callee": {
+                                      "type": "Identifier",
+                                      "name": "Error"
+                                    },
+                                    "arguments": [
+                                      {
+                                        "type": "StringLiteral",
+                                        "extra": {
+                                          "rawValue": "Query Service not initialized",
+                                          "raw": "\"Query Service not initialized\""
+                                        },
+                                        "value": "Query Service not initialized"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "alternate": null
+                              },
+                              {
+                                "type": "ReturnStatement",
+                                "argument": {
+                                  "type": "CallExpression",
+                                  "callee": {
+                                    "type": "MemberExpression",
+                                    "object": {
+                                      "type": "Identifier",
+                                      "name": "queryService"
+                                    },
+                                    "computed": false,
+                                    "property": {
+                                      "type": "Identifier",
+                                      "name": "pools"
+                                    }
+                                  },
+                                  "arguments": [
+                                    {
+                                      "type": "Identifier",
+                                      "name": "request"
+                                    }
+                                  ]
+                                }
+                              }
+                            ],
+                            "directives": []
+                          }
+                        },
+                        {
+                          "type": "Identifier",
+                          "name": "options"
+                        }
+                      ],
+                      "typeParameters": {
+                        "type": "TSTypeParameterInstantiation",
+                        "params": [
+                          {
+                            "type": "TSTypeReference",
+                            "typeName": {
+                              "type": "Identifier",
+                              "name": "QueryPoolsResponse"
+                            }
+                          },
+                          {
+                            "type": "TSTypeReference",
+                            "typeName": {
+                              "type": "Identifier",
+                              "name": "Error"
+                            }
+                          },
+                          {
+                            "type": "TSTypeReference",
+                            "typeName": {
+                              "type": "Identifier",
+                              "name": "TData"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "directives": []
+              },
+              "typeParameters": {
+                "type": "TSTypeParameterDeclaration",
+                "params": [
+                  {
+                    "type": "TSTypeParameter",
+                    "name": "TData",
+                    "default": {
+                      "type": "TSTypeReference",
+                      "typeName": {
+                        "type": "Identifier",
+                        "name": "QueryPoolsResponse"
+                      }
+                    }
+                  }
+                ],
+                "extra": {
+                  "trailingComma": 174
+                }
+              }
+            }
+          }
+        ],
+        "kind": "const"
+      }
+    ],
+    "directives": []
+  },
+  "comments": []
+}
